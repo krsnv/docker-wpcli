@@ -1,11 +1,13 @@
 FROM ubuntu:16.04
-MAINTAINER Vladimir Krasnov <v@krsnv.ru>
 
-RUN apt-get update -qq && apt-get install wget php-cli less -y
-RUN wget -O /usr/sbin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-    && chmod +x /usr/sbin/wp
+LABEL maintainer="v@krsnv.ru"
+LABEL version="1.0"
 
-WORKDIR /wpcli
+RUN apt-get update -qq && \
+    apt-get install wget php-cli less -y && \
+    wget -O /usr/sbin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+    chmod +x /usr/sbin/wp
 
-ENTRYPOINT ["wp"]
-CMD ["--allow-root"]
+WORKDIR /app
+
+ENTRYPOINT ["wp", "--allow-root"]

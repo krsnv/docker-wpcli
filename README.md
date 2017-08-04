@@ -11,4 +11,4 @@ Clone this repo and do:
 
 ## Use
 
-```docker run -v $(pwd)/:/wpcli -it wpcli <WP-CLI command> --allow-root```
+```docker run -v $(pwd)/:/app -it wpcli <WP-CLI command>```
